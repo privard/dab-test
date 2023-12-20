@@ -1,0 +1,7 @@
+## requirements-dev.txt: dependencies for local development.
+pyspark==3.5.0
+notebook
+
+## Dependencies for building wheel files
+setuptools
+wheel

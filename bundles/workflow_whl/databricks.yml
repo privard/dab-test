@@ -1,0 +1,12 @@
+bundle:
+  name: workflow_whl
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://***.cloud.databricks.com

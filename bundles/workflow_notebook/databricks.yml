@@ -1,0 +1,17 @@
+bundle:
+  name: workflow_notebook
+
+include:
+  - resources/*.yml
+
+artifacts:
+  shared_lib:
+    type: whl
+    path: ../../libs/shared_lib/
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://***.cloud.databricks.com

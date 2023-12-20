@@ -1,0 +1,26 @@
+resources:
+  jobs:
+    workflow_whl_job:
+      name: workflow_whl
+
+      tasks:
+        - task_key: main_task
+          job_cluster_key: job_cluster
+          python_wheel_task:
+            package_name: workflow_whl
+            entry_point: main
+          libraries:
+            - whl: ../dist/*.whl
+            # Adding the below as suggested in the docs
+            # https://docs.databricks.com/en/dev-tools/bundles/library-dependencies.html
+            # fails because the whl path is outside the bundle root
+            - whl: ../../libs/shared_lib/dist/*.whl
+
+      job_clusters:
+        - job_cluster_key: job_cluster
+          new_cluster:
+            spark_version: 13.3.x-scala2.12
+            node_type_id: c5d.xlarge
+            autoscale:
+                min_workers: 1
+                max_workers: 2
